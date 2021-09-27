@@ -5,6 +5,7 @@ const cors = require("cors");
 const http = require("http");
 const https = require("https");
 const utils = require("./utils/index");
+const serverless = require('serverless-http')
 
 
 http.globalAgent.maxSockets = Infinity;
@@ -30,3 +31,4 @@ app.use(express.urlencoded({ extended: false }));
 app.listen(port, () => {
   console.log(`Server listen on port http://localhost:${port}`);
 });
+module.exports.handler = serverless(app)
